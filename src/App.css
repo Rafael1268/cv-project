@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;800&display=swap');
+
+* {
+  font-family: Sora, Roboto, 'Open Sans', sans-serif;
+}
+
+body {
+  background-color: #1F1F1F;
+}
+
+/* Header */
+h1 {
+  color: white;
+  font-size: 2.75em;
+  background: -webkit-linear-gradient(45deg, #6100FF, #FF008A, #FFC83A);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo {
+  position: absolute;
+  right: 37vw;
+  width: 95px;
+  z-index: -1;
+}
