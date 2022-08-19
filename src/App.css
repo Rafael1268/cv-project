@@ -20,13 +20,16 @@ h1 {
 
 #header {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 }
 
 #logo {
-  position: absolute;
-  right: 37vw;
+  position: relative;
+  top: -110px;
+  left: 130px;
   width: 95px;
   z-index: -1;
 }
+
+/* Main */
