@@ -7,7 +7,7 @@ const Header = () => {
       <h1>CV CREATOR</h1>
       <img src={logo} alt="logo" id="logo"></img>
     </div>
-  )
-}
+  );
+};
 
 export default Header;

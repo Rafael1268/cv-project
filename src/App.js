@@ -10,8 +10,8 @@ class App extends Component {
         <Header></Header>
         <Main></Main>
       </div>
-    )
-  }
-}
+    );
+  };
+};
 
 export default App;
