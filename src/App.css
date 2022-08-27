@@ -22,6 +22,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: -85px;
 }
 
 #logo {
@@ -75,15 +76,33 @@ input {
   border-radius: 5px;
 }
 
-label {
+label,
+h6 {
   color: white;
   font-size: 0.8em;
   font-weight: 600;
   margin-top: 15px;
+  margin-bottom: 0;
   background: -webkit-linear-gradient(45deg, #6100FF, #FF008A, #FFC83A);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+h6 {
+  margin-top: 0;
+}
+
+p {
+  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0;
+}
+
+hr {
+  color: #1F1F1F;
+  min-width: 100%;
 }
 
 button {
@@ -109,6 +128,10 @@ button:hover {
   color: white;
 }
 
-#no-margin {
+.margin {
+  margin-top: 15px;
+}
+
+.no-margin {
   margin: 0;
 }
