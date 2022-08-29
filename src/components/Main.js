@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Education from "./Education";
+import EducationPreview from "./EducationPreview";
 import Experience from "./Experience";
 import uniqid from "uniqid";
 
@@ -54,6 +55,20 @@ class Main extends Component {
         address: personalInfo.children[5].children[1].value,
       }
     });
+    const eduCopy = [...this.state.education];
+    let eduCopy2 = [];
+    eduCopy.forEach((edu) => {
+      const eduDiv = document.getElementById(edu.id);
+      console.log(eduDiv.children[0].children[1].value);
+      eduCopy2.push({
+        id: edu.id,
+        school: eduDiv.children[0].children[1].value,
+        degree: eduDiv.children[1].children[1].value,
+        from: eduDiv.children[2].children[1].value,
+        to: eduDiv.children[3].children[1].value,
+      });
+    });
+    this.setState({ education: eduCopy2 },);
   };
 
   render() {
@@ -109,6 +124,7 @@ class Main extends Component {
           <p>{this.state.personal.address}</p>
           <hr></hr>
           <h2>Education</h2>
+          <EducationPreview education={this.state.education}></EducationPreview>
           <h2>Experience</h2>
         </div>
       </div>
