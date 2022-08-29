@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Education from "./Education";
 import EducationPreview from "./EducationPreview";
 import Experience from "./Experience";
+import ExperiencePreview from "./ExperiencePreview";
 import uniqid from "uniqid";
 
 class Main extends Component {
@@ -59,7 +60,6 @@ class Main extends Component {
     let eduCopy2 = [];
     eduCopy.forEach((edu) => {
       const eduDiv = document.getElementById(edu.id);
-      console.log(eduDiv.children[0].children[1].value);
       eduCopy2.push({
         id: edu.id,
         school: eduDiv.children[0].children[1].value,
@@ -69,6 +69,19 @@ class Main extends Component {
       });
     });
     this.setState({ education: eduCopy2 },);
+    const expCopy = [...this.state.experience];
+    let expCopy2 = [];
+    expCopy.forEach((exp) => {
+      const expDiv = document.getElementById(exp.id);
+      expCopy2.push({
+        id: exp.id,
+        position: expDiv.children[0].children[1].value,
+        company: expDiv.children[1].children[1].value,
+        from: expDiv.children[2].children[1].value,
+        to: expDiv.children[3].children[1].value,
+      });
+    });
+    this.setState({ experience: expCopy2 },);
   };
 
   render() {
@@ -126,6 +139,7 @@ class Main extends Component {
           <h2>Education</h2>
           <EducationPreview education={this.state.education}></EducationPreview>
           <h2>Experience</h2>
+          <ExperiencePreview experience={this.state.experience}></ExperiencePreview>
         </div>
       </div>
      );
