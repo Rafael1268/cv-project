@@ -15,34 +15,92 @@ class Main extends Component {
     };
   };
 
-  addEdu = () => {
-    const eduCopy = [...this.state.education];
-    eduCopy.push({
-      id: uniqid()
+  saveEdu = () => {
+    let eduCopy = [];
+    this.state.education.forEach((edu) => {
+      const eduDiv = document.getElementById(edu.id);
+      eduCopy.push({
+        id: edu.id,
+        school: eduDiv.children[0].children[1].value,
+        degree: eduDiv.children[1].children[1].value,
+        from: eduDiv.children[2].children[1].value,
+        to: eduDiv.children[3].children[1].value,
+      });
     });
-    this.setState({ education: eduCopy });
+    return eduCopy;
+  };
+
+  saveExp = () => {
+    let expCopy = [];
+    this.state.experience.forEach((exp) => {
+      const expDiv = document.getElementById(exp.id);
+      expCopy.push({
+        id: exp.id,
+        school: expDiv.children[0].children[1].value,
+        degree: expDiv.children[1].children[1].value,
+        from: expDiv.children[2].children[1].value,
+        to: expDiv.children[3].children[1].value,
+      });
+    });
+    return expCopy;
+  };
+
+  addEdu = () => {
+    const eduCopy = this.saveEdu();
+    const expCopy = this.saveExp();
+    this.setState({ 
+      education: eduCopy,
+      experience: expCopy 
+    }, () => {
+      const eduCopy2 = [...this.state.education];
+      eduCopy2.push({
+        id: uniqid()
+      });
+      this.setState({ education: eduCopy2 });
+    });
   };
 
   removeEdu = (id) => {
-    const deleteNum = this.state.education.findIndex(edu => edu.id === id)
-    const eduCopy = [...this.state.education];
-    eduCopy.splice(deleteNum, 1);
-    this.setState({ education: eduCopy });
-  }
+    const eduCopy = this.saveEdu();
+    const expCopy = this.saveExp();
+    this.setState({ 
+      education: eduCopy,
+      experience: expCopy 
+    }, () => {
+      const deleteNum = this.state.education.findIndex(edu => edu.id === id)
+      const eduCopy2 = [...this.state.education];
+      eduCopy2.splice(deleteNum, 1);
+      this.setState({ education: eduCopy2 });
+    });
+  };
 
   addExp = () => {
-    const expCopy = [...this.state.experience];
-    expCopy.push({
+    const eduCopy = this.saveEdu();
+    const expCopy = this.saveExp();
+    this.setState({ 
+      education: eduCopy,
+      experience: expCopy 
+    }, () => {
+      const expCopy2 = [...this.state.experience];
+      expCopy2.push({
       id: uniqid()
+        });
+      this.setState({ experience: expCopy2 });
     });
-    this.setState({ experience: expCopy });
   };
 
   removeExp = (id) => {
-    const deleteNum = this.state.experience.findIndex(exp => exp.id === id)
-    const expCopy = [...this.state.experience];
-    expCopy.splice(deleteNum, 1);
-    this.setState({ experience: expCopy });
+    const eduCopy = this.saveEdu();
+    const expCopy = this.saveExp();
+    this.setState({ 
+      education: eduCopy,
+      experience: expCopy 
+    }, () => {
+      const deleteNum = this.state.experience.findIndex(exp => exp.id === id)
+      const expCopy2 = [...this.state.experience];
+      expCopy2.splice(deleteNum, 1);
+      this.setState({ experience: expCopy2 });
+    });
   };
 
   preview = () => {
